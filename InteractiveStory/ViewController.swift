@@ -15,7 +15,7 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        
+        NotificationCenter.default.addObserver(self, selector: #selector(ViewController.keyboardWillShow(_:)), name: UIResponder.keyboardWillShowNotification, object: nil)
     }
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "startAdventure" {
@@ -40,24 +40,12 @@ class ViewController: UIViewController {
             } catch let error {
                 fatalError("\(error.localizedDescription)")
             }
-            
-            
-            
-            
         }
     }
-
-
     
-    
-    
-    
-    
-    
-    
-    
-    
-    
+    @objc func keyboardWillShow(_ notification: Notification) {
+        print("Keyboard will show")
+    }
     
     
     
