@@ -77,9 +77,15 @@ class PageController: UIViewController {
         return button
     }()
     
-    let secondChoiceButton: UIButton = {
+    lazy var secondChoiceButton: UIButton = {
         let button = UIButton(type: .system)
         button.translatesAutoresizingMaskIntoConstraints = false
+        
+        let title = self.page?.secondChoice?.title ?? "Play Again?"
+        let selector = self.page?.secondChoice != nil ? #selector(PageController.loadSecondChoice) : #selector(PageController.playAgain)
+        
+        button.setTitle(title, for: .normal)
+        button.addTarget(self, action: selector, for: .touchUpInside)
         
         return button
     }()
@@ -104,21 +110,9 @@ class PageController: UIViewController {
         
         if let page = page {
             
-            if let firstChoice = page.firstChoice {
-                firstChoiceButton.setTitle(firstChoice.title, for: .normal)
-                firstChoiceButton.addTarget(self, action: #selector(PageController.loadFirstChoice), for: .touchUpInside)
-            } else {
-                firstChoiceButton.setTitle("Play Again?", for: .normal)
-                firstChoiceButton.addTarget(self, action: #selector(PageController.playAgain), for: .touchUpInside)
-            }
-            
-            
             if let secondChoice = page.secondChoice {
                 secondChoiceButton.setTitle(secondChoice.title, for: .normal)
                 secondChoiceButton.addTarget(self, action: #selector(PageController.loadSecondChoice), for: .touchUpInside)
-            } else {
-                secondChoiceButton.setTitle("Play Again?", for: .normal)
-                secondChoiceButton.addTarget(self, action: #selector(PageController.playAgain), for: .touchUpInside)
             }
         }
     }
