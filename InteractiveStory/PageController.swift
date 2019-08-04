@@ -40,6 +40,8 @@ extension Page {
 class PageController: UIViewController {
     
     var page: Page?
+    // Create an instance of soundEffectPlayer
+    let soundEffectsPlayer = SoundEffectsPlayer()
     
     // MARK: - User Interface Propertires aka views
     
@@ -161,6 +163,10 @@ class PageController: UIViewController {
             let nextPage = firstChoice.page
             let pageController = PageController(page: nextPage)
             
+            // Before we push the new viewController onto the navigation stack we play the PageTurn.wav sound
+            soundEffectsPlayer.playSound(for: firstChoice.page.story)
+            
+            
             navigationController?.pushViewController(pageController, animated: true)
         }
     }
@@ -168,6 +174,9 @@ class PageController: UIViewController {
         if let page = page, let secondChoice = page.secondChoice {
             let nextPage = secondChoice.page
             let pageController = PageController(page: nextPage)
+            
+            // Before we push the new viewController onto the navigation stack we play the PageTurn.wav sound
+            soundEffectsPlayer.playSound(for: secondChoice.page.story)
             
             navigationController?.pushViewController(pageController, animated: true)
         }
