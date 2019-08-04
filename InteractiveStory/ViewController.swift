@@ -6,6 +6,33 @@
 //  Copyright © 2019 Dylan McComas. All rights reserved.
 //
 
+/*
+ Important topics on this App
+ 
+ Navigation Controllers
+ * Navigating through hierarchical data
+ * Segues
+ * Multiple Screens of Informations
+ 
+ Custom Data Structures
+ * Linked Lists
+ * Trees
+ * Efficient Data Structures
+ 
+ Programmatic Views
+ * Creating and laying out views
+ * Programmatic Auto Layout
+ 
+ Communication Patterns
+ * Delegate Pattern - used to be notified of the text fields behavior
+ * Notifications - Allows us to use a one to many communication style
+ 
+ Fun Stuff!
+ * Accepting text input
+ * Playing sounds using a low-level C API
+ 
+ */
+
 import UIKit
 
 class ViewController: UIViewController {
